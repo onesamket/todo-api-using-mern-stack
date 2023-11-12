@@ -16,7 +16,7 @@ const createTodo = (req: Request, res: Response) => {
   try {
     const { title, content } = req.body;
     console.log(req.body);
-    Todo.savaTodo(title, content);
+    Todo.saveTodo(title, content);
     res.status(201).send("Todo created ");
   } catch (error) {
     res.status(400).send({ error: error });
@@ -34,7 +34,16 @@ const deleteTodo = async (req: Request, res: Response) => {
   }
 };
 
-const updateTodo = (req: Request, res: Response) => {};
+const updateTodo = async (req: Request, res: Response) => {
+  try {
+    const { id, title, content } = req.body;
+    const todo = new Todo();
+    const updatedTodo = await todo.updateTodo(id, title, content);
+    res.status(200).json({ updatedTodo: updatedTodo });
+  } catch (error) {
+    res.status(400).send({ error: error });
+  }
+};
 
 const todoController = { createTodo, deleteTodo, getTodos, updateTodo };
 export default todoController;
