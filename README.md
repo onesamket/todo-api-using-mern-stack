@@ -47,10 +47,10 @@ This is a full-stack web application built using the MERN stack (MongoDB, Expres
     ```
 - setup your mongodb url
   ```bash
-  npm run dev
+    npm run dev
  ```
 
-## Contributing
+Contributing
 If you'd like to contribute, please follow these steps:
 
 - Fork the repository.
